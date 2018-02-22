@@ -217,8 +217,7 @@ var SelectComponent = (function () {
             return;
         }
         if (this.multiple === true && this.active) {
-            var index = this.active.indexOf(item);
-            this.active.splice(index, 1);
+            this.active = this.active.filter(function (i) { return i.text !== item.text; }).slice();
             this.data.next(this.active);
             this.doEvent('removed', item);
         }
