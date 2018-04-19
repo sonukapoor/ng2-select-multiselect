@@ -10,13 +10,32 @@ var OffClickDirective = (function () {
     };
     OffClickDirective.prototype.ngOnInit = function () {
         var _this = this;
-        setTimeout(function () { if (typeof document !== 'undefined') {
-            document.addEventListener('click', _this.offClickHandler);
-        } }, 0);
+        setTimeout(function () {
+            if (typeof document !== 'undefined') {
+                document.addEventListener('click', function () {
+                    _this.offClickHandler(-1);
+                });
+                var spans = document.getElementsByClassName('ui-select-toggle');
+                var _loop_1 = function (i) {
+                    spans[i].removeEventListener('click', _this.offClickHandler);
+                    var id = parseInt(spans[i].id);
+                    spans[i].addEventListener('click', function () {
+                        _this.offClickHandler(id);
+                    });
+                };
+                for (var i = 0; i < spans.length; i++) {
+                    _loop_1(i);
+                }
+            }
+        }, 0);
     };
     OffClickDirective.prototype.ngOnDestroy = function () {
         if (typeof document !== 'undefined') {
             document.removeEventListener('click', this.offClickHandler);
+            var spans = document.getElementsByClassName('ui-select-toggle');
+            for (var i = 0; i < spans.length; i++) {
+                spans[i].removeEventListener('click', this.offClickHandler);
+            }
         }
     };
     OffClickDirective.decorators = [
