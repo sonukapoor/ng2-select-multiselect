@@ -18,7 +18,7 @@ var OffClickDirective = (function () {
                 var spans = document.getElementsByClassName('ui-select-toggle');
                 var _loop_1 = function (i) {
                     spans[i].removeEventListener('click', _this.offClickHandler);
-                    var id = parseInt(spans[i].id);
+                    var id = spans[i].id;
                     spans[i].addEventListener('click', function () {
                         _this.offClickHandler(id);
                     });

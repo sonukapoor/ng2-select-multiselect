@@ -44,7 +44,7 @@ var SelectComponent = (function () {
         this._disabled = false;
         this._active = [];
         this.element = element;
-        this.id = Math.round(Math.random() * 100);
+        this.id = Math.random().toString(36).replace(/[^a-z]+/g, '');
         this.clickedOutside = this.clickedOutside.bind(this);
     }
     Object.defineProperty(SelectComponent.prototype, "items", {
@@ -239,7 +239,7 @@ var SelectComponent = (function () {
         }
     };
     SelectComponent.prototype.clickedOutside = function (id) {
-        if (this.id !== id || id === -1) {
+        if (this.id !== id || id === '-1') {
             this.inputMode = false;
             this.optionsOpened = false;
         }

@@ -25,7 +25,7 @@ export declare class SelectComponent implements OnInit, ControlValueAccessor {
     itemObjects: Array<SelectItem>;
     activeOption: SelectItem;
     element: ElementRef;
-    id: number;
+    id: string;
     inputMode: boolean;
     protected optionsOpened: boolean;
     protected onChange: any;
@@ -43,7 +43,7 @@ export declare class SelectComponent implements OnInit, ControlValueAccessor {
     ngOnInit(): any;
     remove(item: SelectItem): void;
     doEvent(type: string, value: any): void;
-    clickedOutside(id: number): void;
+    clickedOutside(id: string): void;
     readonly firstItemHasChildren: boolean;
     writeValue(val: any): void;
     validate(c: FormControl): any;
