@@ -99,7 +99,7 @@ var SelectComponent = (function () {
         },
         set: function (selectedItems) {
             var _this = this;
-            if (!selectedItems || selectedItems.length === 0) {
+            if (!selectedItems || selectedItems.length === 0 || !Array.isArray(selectedItems)) {
                 this._active = [];
             }
             else {
